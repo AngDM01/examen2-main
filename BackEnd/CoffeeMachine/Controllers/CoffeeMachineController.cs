@@ -1,4 +1,4 @@
-﻿using CoffeeMachine.Models;
+﻿using CoffeeMachine.Domain.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

@@ -1,6 +1,7 @@
 ﻿using CoffeeMachine.Controllers;
+using CoffeeMachine.Domain.MoneyModels;
 
-namespace CoffeeMachine.Models
+namespace CoffeeMachine.Domain.Models
 {
   public class OrderCoffeeRequest
   {

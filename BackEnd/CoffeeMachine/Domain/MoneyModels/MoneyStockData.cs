@@ -1,4 +1,4 @@
-﻿namespace CoffeeMachine.Models
+﻿namespace CoffeeMachine.Domain.MoneyModels
 {
   public class MoneyStockData
   {
