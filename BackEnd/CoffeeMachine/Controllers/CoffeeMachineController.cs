@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using CoffeeMachine.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoffeeMachine.Controllers
@@ -32,7 +33,7 @@ namespace CoffeeMachine.Controllers
         }
 
         [HttpPost("buyCoffee")]
-        public ActionResult<string> BuyCoffee([FromBody] OrderRequest request)
+        public ActionResult<string> BuyCoffee([FromBody] OrderCoffeeRequest request)
         {
             if (request.Order == null || request.Order.Count == 0)
                 return BadRequest("Ordem vacia.");
@@ -90,18 +91,5 @@ namespace CoffeeMachine.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-    }
-
-    public class OrderRequest
-    {
-        public Dictionary<string, int> Order { get; set; }
-        public Payment Payment { get; set; }
-    }
-
-    public class Payment
-    {
-        public int TotalAmount { get; set; }
-        public List<int> Coins { get; set; }
-        public List<int> Bills { get; set; }
     }
 }
