@@ -1,0 +1,53 @@
+# === Visual Studio / .NET ===
+
+# Compilados
+bin/
+obj/
+out/
+Debug/
+Release/
+
+# Archivos de usuario de Visual Studio
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+*.vs/
+
+# Archivos de configuración temporales
+*.cache
+*.config.user
+
+# Paquetes de NuGet
+packages/
+*.nupkg
+# Excepto el archivo de control
+!packages/build/
+
+# Archivos generados por el sistema
+*.tmp
+*.temp
+*.log
+
+# Config de Resharper / Rider
+_ReSharper.Caches/
+.idea/
+
+# Archivos de publicación
+*.Publish.xml
+
+# Archivos de cobertura
+coverage/
+*.coverage
+*.coveragexml
+
+# Archivos de pruebas
+TestResults/
+*.trx
+
+# Archivos de auto-restauración
+project.lock.json
+project.fragment.lock.json
+
+# Archivos de IIS Express
+/.vs/config/
