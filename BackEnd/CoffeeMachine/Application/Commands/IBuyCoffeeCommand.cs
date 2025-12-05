@@ -1,9 +1,11 @@
-﻿using CoffeeMachine.Domain.MoneyModels;
+﻿using CoffeeMachine.Domain.CoffeeModels;
+using CoffeeMachine.Domain.Models;
+using CoffeeMachine.Domain.MoneyModels;
 
 namespace CoffeeMachine.Application.Commands
 {
   public interface IBuyCoffeeCommand
   {
-    MoneyChangeData Execute();
+    MoneyChangeData Execute(List<CoffeeOrderItem> coffeesRequest, Payment payment);
   }
 }
