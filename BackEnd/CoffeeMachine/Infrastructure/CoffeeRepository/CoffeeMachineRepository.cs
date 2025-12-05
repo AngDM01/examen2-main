@@ -27,5 +27,13 @@
     {
       return coffeesPrice;
     }
+
+    public void SetCoffeeStock(string coffeeName, int newStock)
+    {
+      if (!coffeesStock.ContainsKey(coffeeName))
+        throw new ArgumentException($"El café '{coffeeName}' no está en stock.");
+
+      coffeesStock[coffeeName] = newStock;
+    }
   }
 }

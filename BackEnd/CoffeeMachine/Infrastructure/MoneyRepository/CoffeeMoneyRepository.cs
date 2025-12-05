@@ -14,5 +14,13 @@
     {
       return changeStock;
     }
+
+    public void SetMoneyChangeStock(int coinValue, int newStock)
+    {
+      if (!changeStock.ContainsKey(coinValue))
+        throw new ArgumentException($"No existen monedas de '{coinValue}' para cambio.");
+
+      changeStock[coinValue] = newStock;
+    }
   }
 }
