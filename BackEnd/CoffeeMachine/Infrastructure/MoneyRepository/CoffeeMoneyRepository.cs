@@ -12,7 +12,7 @@
 
     public Dictionary<int, int> GetChangeStock()
     {
-      return changeStock;
+      return new Dictionary<int, int>(changeStock);
     }
 
     public void SetMoneyChangeStock(int coinValue, int newStock)

@@ -20,12 +20,12 @@
 
     public Dictionary<string, int> GetCoffeesAndItsStock()
     {
-      return coffeesStock;
+      return new Dictionary<string, int>(coffeesStock);
     }
 
     public Dictionary<string, int> GetCoffeesAndItsPrice()
     {
-      return coffeesPrice;
+      return new Dictionary<string, int>(coffeesPrice);
     }
 
     public void SetCoffeeStock(string coffeeName, int newStock)
