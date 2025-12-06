@@ -28,12 +28,15 @@
       return new Dictionary<string, int>(coffeesPrice);
     }
 
-    public void SetCoffeeStock(string coffeeName, int newStock)
+    public void UpdateCoffeeStock(string coffeeName, int soldStock)
     {
       if (!coffeesStock.ContainsKey(coffeeName))
         throw new ArgumentException($"El café '{coffeeName}' no está en stock.");
 
-      coffeesStock[coffeeName] = newStock;
+      if (coffeesStock[coffeeName] - soldStock < 0)
+        throw new ArgumentException($"No hay suficiente stock para '{coffeeName}'");
+
+      coffeesStock[coffeeName] -= soldStock;
     }
   }
 }

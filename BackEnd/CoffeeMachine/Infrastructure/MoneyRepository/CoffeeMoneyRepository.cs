@@ -15,12 +15,15 @@
       return new Dictionary<int, int>(changeStock);
     }
 
-    public void SetMoneyChangeStock(int coinValue, int newStock)
+    public void UpdateMoneyChangeStock(int coinValue, int quantityCahnge)
     {
       if (!changeStock.ContainsKey(coinValue))
         throw new ArgumentException($"No existen monedas de '{coinValue}' para cambio.");
 
-      changeStock[coinValue] = newStock;
+      if (changeStock[coinValue] - quantityCahnge < 0)
+        throw new ArgumentException($"No hay suficiente stock de '{coinValue}'");
+
+      changeStock[coinValue] -= quantityCahnge;
     }
   }
 }
