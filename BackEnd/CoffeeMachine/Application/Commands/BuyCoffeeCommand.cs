@@ -23,6 +23,9 @@ namespace CoffeeMachine.Application.Commands
 
       int change = payment.TotalAmount - totalCost;
 
+      if (change < 0)
+        throw new ArgumentException("Cambio negativo, operación no válida");
+
       try
       {
         MoneyChangeData moneyChangeData = new MoneyChangeData();
@@ -31,7 +34,6 @@ namespace CoffeeMachine.Application.Commands
 
         var coinsStock = _CoffeeMoneyRepository.GetChangeStock();
 
-        // Falta ver bien esta lógica
         foreach (var coin in coinsStock.Keys.OrderByDescending(c => c))
         {
           var count = Math.Min(change / coin, coinsStock[coin]);
@@ -50,20 +52,35 @@ namespace CoffeeMachine.Application.Commands
 
         if (change > 0)
         {
-          return StatusCode(500, "No hay suficiente cambio en la máquina.");
+          throw new Exception("No hay suficiente cambio en la máquina.");
         }
 
-        return Ok(result);
+        setNewMoneyChangeStock(moneyChangeData);
+
+        setNewCoffeeStock(coffeesRequest);
+
+        return moneyChangeData;
       }
       catch (Exception ex)
       {
-
+        throw new Exception("Algo salió mal al realizar la compra. " + ex.Message);
       }
-      return new MoneyChangeData
+    }
+
+    private void setNewMoneyChangeStock(MoneyChangeData moneyChange)
+    {
+      foreach (var coin in moneyChange.ChangeBreakdown)
       {
-        TotalChange = 0,
-        ChangeBreakdown = new List<MoneyStockData>()
-      };
+        this._CoffeeMoneyRepository.UpdateMoneyChangeStock(coin.CoinValue, coin.CoinStock);
+      }
+    }
+
+    private void setNewCoffeeStock(List<CoffeeOrderItem> coffeesRequest)
+    {
+      foreach (var coffee in coffeesRequest)
+      {
+        this._CoffeeMachineRepo.UpdateCoffeeStock(coffee.CoffeeName, coffee.Amount);
+      }
     }
   }
 }

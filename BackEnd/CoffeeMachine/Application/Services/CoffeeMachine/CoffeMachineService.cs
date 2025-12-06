@@ -87,9 +87,7 @@ namespace CoffeeMachine.Application.Services.CoffeeMachine
       foreach (var coffee in selectedCoffees)
       {
         if (coffee.Amount > coffee.ActualStock)
-        {
           throw new InvalidOperationException($"No hay suficientes {coffee.CoffeeName} en la máquina.");
-        }
       }
 
       // Si llega acá, es porque se cumple todo para poder realizar la compra
@@ -97,7 +95,7 @@ namespace CoffeeMachine.Application.Services.CoffeeMachine
       {
         return this._BuyCoffeeCommand.Execute(selectedCoffees, request.Payment);
       }
-      catch (Exception ex)
+      catch (Exception)
       {
         throw;
       }
