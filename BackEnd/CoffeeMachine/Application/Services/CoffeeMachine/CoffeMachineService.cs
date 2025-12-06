@@ -39,7 +39,7 @@ namespace CoffeeMachine.Application.Services.CoffeeMachine
 
     public List<CoffeePriceData> GetCoffeesPrices()
     {
-      Dictionary<string, int> coffeePriceDictionary = this._CoffeeMachineRepo.GetCoffeesAndItsStock();
+      Dictionary<string, int> coffeePriceDictionary = this._CoffeeMachineRepo.GetCoffeesAndItsPrice();
 
       List<CoffeePriceData> coffeePrice = new List<CoffeePriceData>();
 

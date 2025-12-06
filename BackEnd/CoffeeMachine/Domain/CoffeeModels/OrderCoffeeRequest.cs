@@ -1,5 +1,4 @@
-﻿using CoffeeMachine.Controllers;
-using CoffeeMachine.Domain.MoneyModels;
+﻿using CoffeeMachine.Domain.MoneyModels;
 
 namespace CoffeeMachine.Domain.Models
 {
